@@ -75,6 +75,7 @@ WebsocketStream.prototype.write = function(data) {
 }
 
 WebsocketStream.prototype._write = function(data) {
+  data = data.toString();
   typeof WebSocket != 'undefined' && this.ws instanceof WebSocket
     ? this.ws.send(data)
     : this.ws.send(data, { binary : isBuffer(data) })
